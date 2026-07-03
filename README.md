@@ -1,17 +1,17 @@
 # Biotech Catalyst Event Research
 
-I built this repo to reconstruct the biotech catalyst sleeve from my UK Investment Competition work in Python.
+This repo reconstructs the biotech catalyst sleeve from UK Investment Competition work in Python.
 
-The original work was built in Excel and presented as part of a broader portfolio. This repo narrows the focus to one piece: FDA/PDUFA biotech catalysts, where the core question was whether the market-implied approval probability looked too low relative to an internally scored probability estimate.
+The original work was built in Excel and presented as part of a broader portfolio. This repo narrows the focus to one piece: FDA/PDUFA biotech catalysts, where the core question was whether the market-implied approval probability looked too low relative to a model-scored probability estimate.
 
 ## Research Idea
 
-Small and mid-cap biotech names can move sharply around dated regulatory events. I treated each catalyst as a two-scenario problem:
+Small and mid-cap biotech names can move sharply around dated regulatory events. Each catalyst is treated as a two-scenario problem:
 
 - approval or positive regulatory outcome
 - CRL/failure or negative regulatory outcome
 
-For each event, I looked at the abnormal return over the same event window used in the presentation:
+For each event, abnormal return is measured over the same event window used in the presentation:
 
 ```text
 abnormal return = stock return - S&P 500 return
@@ -27,7 +27,7 @@ The deck used a 2025 sample of 15 small/mid-cap biotech FDA decisions before Oct
 - CRL abnormal return mean around -13.7%
 - mean-template break-even approval probability around 43.6%
 
-The point is not that approval probability gaps are free money. The point is that dated catalysts can be modelled explicitly, with scenario payoffs, break-even probabilities, internal probability scores, and strict position sizing.
+The point is not that approval probability gaps are free money. The point is that dated catalysts can be modelled explicitly, with scenario payoffs, break-even probabilities, model probability scores, and strict position sizing.
 
 ## What This Repo Shows
 
@@ -35,7 +35,7 @@ The point is not that approval probability gaps are free money. The point is tha
 - approval vs CRL payoff summaries
 - market-implied approval probability extraction
 - break-even approval probability math
-- checklist-based internal probability estimates
+- checklist-based model probability estimates
 - probability gap / edge calculation
 - Cytokinetics-style case study reconstruction
 - simple position sizing based on probability edge
@@ -78,7 +78,7 @@ biotech-catalyst-event-research/
 2. `02_probability_gap_case_study.ipynb`
    - reconstructs the Cytokinetics-style case study
    - calculates market-implied approval probability from approval/failure prices
-   - applies a checklist-based internal probability estimate
+   - applies a checklist-based model probability estimate
 
 3. `03_position_sizing_sanity_checks.ipynb`
    - turns probability edge into capped position sizing examples
@@ -104,4 +104,3 @@ jupyter notebook notebooks/
 This is an educational reconstruction, not investment advice and not a live strategy.
 
 The event sample is small, biotech payoffs are fat-tailed, and approval does not guarantee a positive share-price reaction. Market prices can embed expectations, dilution risk, launch uncertainty, label constraints, and funding risk. The checklist scores are a transparent way to structure judgement, not a statistically proven probability model.
-

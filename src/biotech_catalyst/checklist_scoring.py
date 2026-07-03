@@ -1,4 +1,4 @@
-"""Checklist scoring for internal catalyst probability estimates."""
+"""Checklist scoring for model catalyst probability estimates."""
 
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ def adjust_probability_from_score(
     """Adjust baseline probability using the deck's score logic.
 
     Lower scores are better. If a catalyst scores below the average score,
-    the internal probability rises. If it scores above average, it falls.
+    the model probability rises. If it scores above average, it falls.
     """
 
     scaled_score = float(total_score) - float(mean_score)
@@ -59,7 +59,7 @@ def score_to_probability(
     mean_score: float = 10.0,
     penalty_per_point: float = 0.05,
 ) -> float:
-    """Convert a catalyst checklist into an internal probability estimate."""
+    """Convert a catalyst checklist into a model probability estimate."""
 
     total_score = score_catalyst(scores)
     return adjust_probability_from_score(
@@ -68,4 +68,3 @@ def score_to_probability(
         mean_score=mean_score,
         penalty_per_point=penalty_per_point,
     )
-

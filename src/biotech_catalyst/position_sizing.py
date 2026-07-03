@@ -9,16 +9,16 @@ def expected_return_from_scenarios(
     current_price: float,
     approval_price: float,
     failure_price: float,
-    internal_probability: float,
+    model_probability: float,
 ) -> float:
-    """Expected return from current price using internal catalyst probability."""
+    """Expected return from current price using model catalyst probability."""
 
-    ev = expected_value(internal_probability, approval_price, failure_price)
+    ev = expected_value(model_probability, approval_price, failure_price)
     return ev / float(current_price) - 1.0
 
 
 def edge_scaled_weight(
-    internal_probability: float,
+    model_probability: float,
     implied_probability: float,
     neutral_band: float = 0.05,
     max_weight: float = 0.10,
@@ -29,7 +29,7 @@ def edge_scaled_weight(
     and size increases linearly until it reaches the maximum weight.
     """
 
-    edge = probability_edge(internal_probability, implied_probability)
+    edge = probability_edge(model_probability, implied_probability)
     if edge <= neutral_band:
         return 0.0
     usable_edge = (edge - neutral_band) / (1.0 - neutral_band)
@@ -59,4 +59,3 @@ def kelly_fraction_binary(
         raise ValueError("upside_return must be positive and downside_return must be negative")
     fraction = (p / loss) - ((1.0 - p) / gain)
     return max(0.0, fraction)
-

@@ -8,7 +8,7 @@ The core idea was simple:
 2. Estimate the upside price if the event was approved.
 3. Estimate the downside price if the event received a CRL or disappointed.
 4. Back out the market-implied approval probability from those two prices.
-5. Compare that market-implied probability with my own internal probability estimate.
+5. Compare that market-implied probability with a model probability estimate.
 6. Only consider names where the probability gap was large enough to justify event risk.
 
 The useful part of this framework is that it forces every trade idea into explicit assumptions:
@@ -16,9 +16,8 @@ The useful part of this framework is that it forces every trade idea into explic
 - what is the approval scenario?
 - what is the failure scenario?
 - what probability is the market implying?
-- why should my probability estimate be different?
-- how much can I lose if the catalyst fails?
-- how large should the position be before the event?
+- what evidence makes the model probability estimate different?
+- how much downside exists if the catalyst fails?
+- what position size fits the event risk?
 
 This repo focuses only on that biotech catalyst process. It does not include the industrial, energy, mining, defence, or ETF sleeve from the wider presentation.
-

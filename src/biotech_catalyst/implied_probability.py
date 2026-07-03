@@ -59,18 +59,17 @@ def scenario_prices(
 
 
 def expected_value(
-    approval_probability: float,
+    model_probability: float,
     approval_price: float,
     failure_price: float,
 ) -> float:
-    """Expected catalyst value under an internal approval probability."""
+    """Expected catalyst value under a model approval probability."""
 
-    p = clip_probability(approval_probability)
+    p = clip_probability(model_probability)
     return p * approval_price + (1.0 - p) * failure_price
 
 
-def probability_edge(internal_probability: float, implied_probability: float) -> float:
-    """Difference between internal probability and market-implied probability."""
+def probability_edge(model_probability: float, implied_probability: float) -> float:
+    """Difference between model probability and market-implied probability."""
 
-    return float(internal_probability) - float(implied_probability)
-
+    return float(model_probability) - float(implied_probability)

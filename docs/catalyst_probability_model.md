@@ -1,13 +1,13 @@
 # Catalyst Probability Model
 
-I model each catalyst as a two-outcome event:
+Each catalyst is modelled as a two-outcome event:
 
 ```text
 S = current price
 A = approval scenario price
 F = failure / CRL scenario price
 P = market-implied approval probability
-P* = internal approval probability
+P* = model approval probability
 ```
 
 The market-implied probability is:
@@ -27,7 +27,7 @@ where:
 - `U` is the upside return if approved
 - `D` is the downside return if the event fails
 
-The internal probability estimate `P*` is not meant to be magic. I use a checklist to make the judgement explicit:
+The model probability estimate `P*` is not meant to be magic. A checklist makes the judgement explicit:
 
 - endpoint strength
 - safety
@@ -44,4 +44,3 @@ edge = P* - P
 ```
 
 That edge is only useful if the scenario prices and downside are realistic.
-

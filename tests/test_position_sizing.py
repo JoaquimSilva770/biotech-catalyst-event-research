@@ -12,7 +12,7 @@ def test_expected_return_from_scenarios() -> None:
         current_price=100,
         approval_price=130,
         failure_price=80,
-        internal_probability=0.70,
+        model_probability=0.70,
     )
 
     assert expected_return == pytest.approx(0.15)
@@ -30,4 +30,3 @@ def test_kelly_fraction_binary_positive_for_good_edge() -> None:
     fraction = kelly_fraction_binary(0.70, 0.30, -0.15)
 
     assert fraction > 0
-
